@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class QuestionDeck {
 
-	private String type;
+	private int type;
 	private int nextQuestionId;
 	
 	public static String getQuestionTypeText(int type){
@@ -17,7 +17,7 @@ public class QuestionDeck {
 		return null;
 	}
 	
-	public QuestionDeck(String type) {
+	public QuestionDeck(int type) {
 		this.type = type;
 		this.nextQuestionId = 0;
 	}
@@ -30,7 +30,7 @@ public class QuestionDeck {
 		if(nextQuestionId >= size()){
 			throw new NoSuchElementException();
 		}
-		return type + " Question " + (nextQuestionId++);
+		return getQuestionTypeText(type) + " Question " + (nextQuestionId++);
 	}
 
 }

@@ -15,7 +15,7 @@ public class Game {
     	players = new ArrayList<Player>();
     	questions = new QuestionDeck[Board.TYPES_OF_QUESTIONS];
        	for(int i=0;i<Board.TYPES_OF_QUESTIONS;i++){
-    		questions[i] = new QuestionDeck(QuestionDeck.getQuestionTypeText(i));
+    		questions[i] = new QuestionDeck(i);
     	}
     }
     
