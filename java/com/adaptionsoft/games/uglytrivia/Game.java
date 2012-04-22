@@ -1,31 +1,38 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
 	
-	public static final String POP = "Pop";
-	public static final String SCIENCE = "Science";
-	public static final String SPORTS = "Sports";
-	public static final String ROCK = "Rock";
+	public static final int POP = 0;
+	public static final int SCIENCE = 1;
+	public static final int SPORTS = 2;
+	public static final int ROCK = 3;
 	
 	public static final int BOARD_SIZE = 12;
 	
+	public static String getQuestionTypeText(int type){
+		switch(type){
+		case POP: return "Pop";
+		case SCIENCE: return "Science";
+		case SPORTS: return "Sports";
+		case ROCK: return "Rock";
+		}
+		return null;
+	}
+	
 	
 	List<Player> players = new ArrayList<Player>();
-	
-	QuestionDeck popQuestions = new QuestionDeck(POP);
-    QuestionDeck scienceQuestions = new QuestionDeck(SCIENCE);
-    QuestionDeck sportsQuestions = new QuestionDeck(SPORTS);
-    QuestionDeck rockQuestions = new QuestionDeck(ROCK);
+	QuestionDeck[] questions = new QuestionDeck[4];
     
     Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
+    	for(int i=0;i<4;i++){
+    		questions[i] = new QuestionDeck(getQuestionTypeText(i));
+    	}
     }
     
 	/**
@@ -98,19 +105,12 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		System.out.println("The category is " + currentQuestionsCategory());
-		if (currentQuestionsCategory() == POP)
-			System.out.println(popQuestions.getNext());
-		if (currentQuestionsCategory() == SCIENCE)
-			System.out.println(scienceQuestions.getNext());
-		if (currentQuestionsCategory() == SPORTS)
-			System.out.println(sportsQuestions.getNext());
-		if (currentQuestionsCategory() == ROCK)
-			System.out.println(rockQuestions.getNext());		
+		System.out.println("The category is " + getQuestionTypeText(currentQuestionsCategory()));
+		System.out.println(questions[currentQuestionsCategory()].getNext());
 	}
 	
 	// randomly return a category
-	private String currentQuestionsCategory() {
+	private int currentQuestionsCategory() {
 		int currentPlayersPlace = getCurrentPlayersPlace();
 		if (currentPlayersPlace == 0) return POP;
 		if (currentPlayersPlace == 4) return POP;
