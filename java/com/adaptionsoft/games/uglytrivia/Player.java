@@ -36,4 +36,8 @@ public class Player {
 		this.purse++;
 	}
 
+	public void answeredIncorrectly() {
+		this.inPenaltyBox = true;
+	}
+
 }

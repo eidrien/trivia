@@ -15,8 +15,6 @@ public class Game {
 	
 	List<Player> players = new ArrayList<Player>();
 	
-    boolean[] inPenaltyBox  = new boolean[6];
-
     Deque<String> popQuestions = new LinkedList<String>();
     Deque<String> scienceQuestions = new LinkedList<String>();
     Deque<String> sportsQuestions = new LinkedList<String>();
@@ -69,8 +67,6 @@ public class Game {
 		
 		players.add(new Player(playerName));
 		
-	    inPenaltyBox[howManyPlayers()] = false;
-	    
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + howManyPlayers());
 		return true;
@@ -117,7 +113,7 @@ public class Game {
 	}
 
 	boolean isCurrentPlayerInPenaltyBox() {
-		return inPenaltyBox[currentPlayer];
+		return getCurrentPlayer().isInPenaltyBox();
 	}
 
 	private String getCurrentPlayersName() {
@@ -203,7 +199,7 @@ public class Game {
 	public boolean wasIncorrectlyAnswered(){
 		System.out.println("Question was incorrectly answered");
 		System.out.println(getCurrentPlayersName()+ " was sent to the penalty box");
-		inPenaltyBox[currentPlayer] = true;
+		getCurrentPlayer().answeredIncorrectly();
 		
 		nextPlayersTurn();
 		return true;
