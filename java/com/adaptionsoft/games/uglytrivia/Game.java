@@ -10,6 +10,8 @@ public class Game {
 	public static final int SPORTS = 2;
 	public static final int ROCK = 3;
 	
+	public static final int TYPES_OF_QUESTIONS = 4;
+	
 	public static final int BOARD_SIZE = 12;
 	
 	public static String getQuestionTypeText(int type){
@@ -24,24 +26,17 @@ public class Game {
 	
 	
 	List<Player> players = new ArrayList<Player>();
-	QuestionDeck[] questions = new QuestionDeck[4];
+	QuestionDeck[] questions = new QuestionDeck[TYPES_OF_QUESTIONS];
     
     Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
-    	for(int i=0;i<4;i++){
+    	for(int i=0;i<TYPES_OF_QUESTIONS;i++){
     		questions[i] = new QuestionDeck(getQuestionTypeText(i));
     	}
     }
     
-	/**
-	 * Game is playable with two or more players.
-	 */
-	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
-	}
-
 	public boolean add(String playerName) {
 		
 		Player newPlayer = new Player(playerName);
@@ -112,7 +107,7 @@ public class Game {
 	// randomly return a category
 	int currentQuestionsCategory() {
 		int currentPlayersPlace = getCurrentPlayersPlace();
-		return currentPlayersPlace % 4;
+		return currentPlayersPlace % TYPES_OF_QUESTIONS;
 	}
 
 	public boolean wasCorrectlyAnswered() {
