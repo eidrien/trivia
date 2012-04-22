@@ -75,11 +75,6 @@ public class Game {
 		return true;
 	}
 	
-	public boolean remove(String playerName) {
-	  playerNames.remove(howManyPlayers());
-	  return true;
-	}
-	
 	public int howManyPlayers() {
 		return playerNames.size();
 	}
