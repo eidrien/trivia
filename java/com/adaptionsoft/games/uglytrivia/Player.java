@@ -28,4 +28,8 @@ public class Player {
 		return purse;
 	}
 
+	public void moveTo(int newPlace) {
+		this.place = newPlace;
+	}
+
 }

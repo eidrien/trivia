@@ -31,4 +31,10 @@ public class PlayerTest {
 		assertEquals("Tester", player.getName());
 	}
 	
+	@Test
+	public void movingThePlayerChangesItsPlace(){
+		Player player = new Player("Tester");
+		player.moveTo(5);
+		assertEquals(5, player.getPlace());
+	}
 }
