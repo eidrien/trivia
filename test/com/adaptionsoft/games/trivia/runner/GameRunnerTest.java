@@ -16,7 +16,7 @@ public class GameRunnerTest{
 		OutputStreamAccumulator outputStreamAccumulator = new OutputStreamAccumulator();
 		System.setOut(new PrintStream(outputStreamAccumulator)); 
 		GameRunner.main(null);
-		assertEquals(0, outputStreamAccumulator.accumulatedValue);
+		assertEquals(226989, outputStreamAccumulator.accumulatedValue);
 	}
 	
 	class OutputStreamAccumulator extends OutputStream {
