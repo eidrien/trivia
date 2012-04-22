@@ -15,7 +15,6 @@ public class Game {
 	
 	List<Player> players = new ArrayList<Player>();
 	
-    int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
 
     Deque<String> popQuestions = new LinkedList<String>();
@@ -70,7 +69,6 @@ public class Game {
 		
 		players.add(new Player(playerName));
 		
-	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
 	    System.out.println(playerName + " was added");
@@ -190,11 +188,11 @@ public class Game {
 	}
 
 	private void incrementCurrentPlayersPurse() {
-		purses[currentPlayer]++;
+		getCurrentPlayer().answeredCorrectly();
 	}
 
 	int getCurrentPlayersPurse() {
-		return purses[currentPlayer];
+		return getCurrentPlayer().getPurse();
 	}
 
 	private void nextPlayersTurn() {

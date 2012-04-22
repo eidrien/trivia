@@ -32,4 +32,9 @@ public class Player {
 		this.place = newPlace;
 	}
 
+	public void answeredCorrectly() {
+		// TODO Auto-generated method stub
+		this.purse++;
+	}
+
 }
