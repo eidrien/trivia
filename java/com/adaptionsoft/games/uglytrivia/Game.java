@@ -20,7 +20,7 @@ public class Game {
     Deque<String> sportsQuestions = new LinkedList<String>();
     Deque<String> rockQuestions = new LinkedList<String>();
     
-    int currentPlayer = 0;
+    Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
@@ -33,7 +33,7 @@ public class Game {
     }
     
     public Player getCurrentPlayer(){
-    	return players.get(currentPlayer);
+    	return currentPlayer;
     }
 
 	private String createSportsQuestion(int i) {
@@ -65,7 +65,12 @@ public class Game {
 
 	public boolean add(String playerName) {
 		
-		players.add(new Player(playerName));
+		Player newPlayer = new Player(playerName);
+		if(players.isEmpty()){
+			currentPlayer = newPlayer;
+		}
+		players.add(newPlayer);
+		
 		
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + howManyPlayers());
@@ -116,8 +121,8 @@ public class Game {
 		return getCurrentPlayer().isInPenaltyBox();
 	}
 
-	private String getCurrentPlayersName() {
-		return players.get(currentPlayer).getName();
+	String getCurrentPlayersName() {
+		return getCurrentPlayer().getName();
 	}
 
 	private void askQuestion() {
@@ -192,8 +197,9 @@ public class Game {
 	}
 
 	private void nextPlayersTurn() {
-		currentPlayer++;
-		if (currentPlayer == howManyPlayers()) currentPlayer = 0;
+		int nextPlayerPosition = players.indexOf(currentPlayer) + 1;
+		if (nextPlayerPosition == howManyPlayers()) nextPlayerPosition = 0;
+		currentPlayer = players.get(nextPlayerPosition);
 	}
 	
 	public boolean wasIncorrectlyAnswered(){

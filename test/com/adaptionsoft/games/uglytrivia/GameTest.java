@@ -40,4 +40,18 @@ public class GameTest {
 		game.wasIncorrectlyAnswered();
 		assertTrue(game.isCurrentPlayerInPenaltyBox());
 	}
+	
+	@Test
+	public void afterAPlayerAnswersTheCurrentPlayerChanges(){
+		Game game = new Game();
+		game.add("Tester1");
+		game.add("Tester2");
+		game.add("Tester3");
+		game.wasCorrectlyAnswered();
+		assertEquals("Tester2", game.getCurrentPlayersName());
+		game.wasIncorrectlyAnswered();
+		assertEquals("Tester3", game.getCurrentPlayersName());
+		game.wasCorrectlyAnswered();
+		assertEquals("Tester1", game.getCurrentPlayersName());
+	}
 }
