@@ -24,4 +24,12 @@ public class GameTest {
 		game.roll(2);
 		assertEquals(2, game.getCurrentPlayersPlace());
 	}
+	
+	@Test
+	public void answeringCorrectlyAddsOneToTheCurrentPlayersPurse(){
+		Game game = new Game();
+		game.add("Tester");
+		game.wasCorrectlyAnswered();
+		assertEquals(1, game.getCurrentPlayersPurse());
+	}
 }

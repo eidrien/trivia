@@ -182,11 +182,19 @@ public class Game {
 
 	private void currentPlayerAnsweredCorrectly() {
 		System.out.println("Answer was correct!!!!");
-		purses[currentPlayer]++;
+		incrementCurrentPlayersPurse();
 		System.out.println(getCurrentPlayersName() 
 				+ " now has "
-				+ purses[currentPlayer]
+				+ getCurrentPlayersPurse()
 				+ " Gold Coins.");
+	}
+
+	private void incrementCurrentPlayersPurse() {
+		purses[currentPlayer]++;
+	}
+
+	int getCurrentPlayersPurse() {
+		return purses[currentPlayer];
 	}
 
 	private void nextPlayersTurn() {
@@ -194,7 +202,7 @@ public class Game {
 		if (currentPlayer == howManyPlayers()) currentPlayer = 0;
 	}
 	
-	public boolean currentPlayerAnsweredIncorrectly(){
+	public boolean wasIncorrectlyAnswered(){
 		System.out.println("Question was incorrectly answered");
 		System.out.println(getCurrentPlayersName()+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
@@ -207,6 +215,6 @@ public class Game {
 	 * Player wins when its purse contains an amount different than 6.
 	 */
 	private boolean didPlayerWin() {
-		return !(purses[currentPlayer] == 6);
+		return !(getCurrentPlayersPurse() == 6);
 	}
 }
