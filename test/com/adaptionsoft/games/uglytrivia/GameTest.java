@@ -66,4 +66,42 @@ public class GameTest {
 			game.roll(0);
 		}
 	}
+	
+	@Test
+	public void verifyTheQuestionTypeAssociatedWithEachPlace(){
+		Game game = new Game();
+		game.add("Tester1");
+		assertEquals(Game.POP, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SCIENCE, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SPORTS, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.ROCK, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.POP, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SCIENCE, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SPORTS, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.ROCK, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.POP, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SCIENCE, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SPORTS, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.ROCK, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.POP, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SCIENCE, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.SPORTS, game.currentQuestionsCategory());
+		game.roll(1);
+		assertEquals(Game.ROCK, game.currentQuestionsCategory());
+		game.roll(1);
+	}
 }

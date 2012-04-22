@@ -110,18 +110,9 @@ public class Game {
 	}
 	
 	// randomly return a category
-	private int currentQuestionsCategory() {
+	int currentQuestionsCategory() {
 		int currentPlayersPlace = getCurrentPlayersPlace();
-		if (currentPlayersPlace == 0) return POP;
-		if (currentPlayersPlace == 4) return POP;
-		if (currentPlayersPlace == 8) return POP;
-		if (currentPlayersPlace == 1) return SCIENCE;
-		if (currentPlayersPlace == 5) return SCIENCE;
-		if (currentPlayersPlace == 9) return SCIENCE;
-		if (currentPlayersPlace == 2) return SPORTS;
-		if (currentPlayersPlace == 6) return SPORTS;
-		if (currentPlayersPlace == 10) return SPORTS;
-		return ROCK;
+		return currentPlayersPlace % 4;
 	}
 
 	public boolean wasCorrectlyAnswered() {
