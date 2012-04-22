@@ -79,24 +79,24 @@ public class Game {
 	}
 
 	public void roll(int roll) {
-		System.out.println(playerNames.get(currentPlayer) + " is the current player");
+		System.out.println(getCurrentPlayersName() + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
 		if (inPenaltyBox[currentPlayer]) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				
-				System.out.println(playerNames.get(currentPlayer) + " is getting out of the penalty box");
+				System.out.println(getCurrentPlayersName() + " is getting out of the penalty box");
 				places[currentPlayer] = places[currentPlayer] + roll;
 				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 				
-				System.out.println(playerNames.get(currentPlayer) 
+				System.out.println(getCurrentPlayersName() 
 						+ "'s new location is " 
 						+ places[currentPlayer]);
 				System.out.println("The category is " + currentCategory());
 				askQuestion();
 			} else {
-				System.out.println(playerNames.get(currentPlayer) + " is not getting out of the penalty box");
+				System.out.println(getCurrentPlayersName() + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
 				}
 			
@@ -105,13 +105,17 @@ public class Game {
 			places[currentPlayer] = places[currentPlayer] + roll;
 			if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 			
-			System.out.println(playerNames.get(currentPlayer) 
+			System.out.println(getCurrentPlayersName() 
 					+ "'s new location is " 
 					+ places[currentPlayer]);
 			System.out.println("The category is " + currentCategory());
 			askQuestion();
 		}
 		
+	}
+
+	private String getCurrentPlayersName() {
+		return playerNames.get(currentPlayer);
 	}
 
 	private void askQuestion() {
@@ -144,7 +148,7 @@ public class Game {
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
 				purses[currentPlayer]++;
-				System.out.println(playerNames.get(currentPlayer) 
+				System.out.println(getCurrentPlayersName() 
 						+ " now has "
 						+ purses[currentPlayer]
 						+ " Gold Coins.");
@@ -166,7 +170,7 @@ public class Game {
 		
 			System.out.println("Answer was corrent!!!!");
 			purses[currentPlayer]++;
-			System.out.println(playerNames.get(currentPlayer) 
+			System.out.println(getCurrentPlayersName() 
 					+ " now has "
 					+ purses[currentPlayer]
 					+ " Gold Coins.");
@@ -181,7 +185,7 @@ public class Game {
 	
 	public boolean wrongAnswer(){
 		System.out.println("Question was incorrectly answered");
-		System.out.println(playerNames.get(currentPlayer)+ " was sent to the penalty box");
+		System.out.println(getCurrentPlayersName()+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
 		
 		currentPlayer++;
