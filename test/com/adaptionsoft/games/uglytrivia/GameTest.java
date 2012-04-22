@@ -14,7 +14,7 @@ public class GameTest {
 		Game game = new Game();
 		game.add("Tester");
 		game.roll(2);
-		assertEquals(2, game.getCurrentPlayersPlace());
+		assertEquals(2, game.currentPlayer.getPlace());
 	}
 	
 	@Test
@@ -24,7 +24,7 @@ public class GameTest {
 		game.roll(2);
 		game.roll(10);
 		game.roll(2);
-		assertEquals(2, game.getCurrentPlayersPlace());
+		assertEquals(2, game.currentPlayer.getPlace());
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class GameTest {
 		Game game = new Game();
 		game.add("Tester");
 		game.wasCorrectlyAnswered();
-		assertEquals(1, game.getCurrentPlayersPurse());
+		assertEquals(1, game.currentPlayer.getPurse());
 	}
 	
 	@Test
@@ -40,7 +40,7 @@ public class GameTest {
 		Game game = new Game();
 		game.add("Tester");
 		game.wasIncorrectlyAnswered();
-		assertTrue(game.isCurrentPlayerInPenaltyBox());
+		assertTrue(game.currentPlayer.isInPenaltyBox());
 	}
 	
 	@Test
@@ -50,11 +50,11 @@ public class GameTest {
 		game.add("Tester2");
 		game.add("Tester3");
 		game.wasCorrectlyAnswered();
-		assertEquals("Tester2", game.getCurrentPlayersName());
+		assertEquals("Tester2", game.currentPlayer.getName());
 		game.wasIncorrectlyAnswered();
-		assertEquals("Tester3", game.getCurrentPlayersName());
+		assertEquals("Tester3", game.currentPlayer.getName());
 		game.wasCorrectlyAnswered();
-		assertEquals("Tester1", game.getCurrentPlayersName());
+		assertEquals("Tester1", game.currentPlayer.getName());
 	}
 	
 	@Test(expected = NoSuchElementException.class)

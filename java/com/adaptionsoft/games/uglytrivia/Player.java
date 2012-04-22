@@ -34,9 +34,16 @@ public class Player {
 
 	public void answeredCorrectly() {
 		this.purse++;
+		System.out.println("Answer was correct!!!!");
+		System.out.println(getName() 
+				+ " now has "
+				+ getPurse()
+				+ " Gold Coins.");
 	}
 
 	public void answeredIncorrectly() {
+		System.out.println("Question was incorrectly answered");
+		System.out.println(getName()+ " was sent to the penalty box");
 		this.inPenaltyBox = true;
 	}
 
