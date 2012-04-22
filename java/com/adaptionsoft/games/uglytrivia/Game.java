@@ -22,15 +22,31 @@ public class Game {
     
     public  Game(){
     	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast("Pop Question " + i);
-			scienceQuestions.addLast(("Science Question " + i));
-			sportsQuestions.addLast(("Sports Question " + i));
+			popQuestions.addLast(createPopQuestion(i));
+			scienceQuestions.addLast(createScienceQuestion(i));
+			sportsQuestions.addLast(createSportsQuestion(i));
 			rockQuestions.addLast(createRockQuestion(i));
     	}
     }
 
-	public String createRockQuestion(int index){
-		return "Rock Question " + index;
+	private String createSportsQuestion(int i) {
+		return createQuestion("Sports", i);
+	}
+
+	private String createScienceQuestion(int i) {
+		return createQuestion("Science", i);
+	}
+
+	private String createPopQuestion(int i) {
+		return createQuestion("Pop", i);
+	}
+
+	public String createRockQuestion(int i){
+		return createQuestion("Rock", i);
+	}
+	
+	public String createQuestion(String type, int index){
+		return type + " Question " + index;
 	}
 
 	/**
