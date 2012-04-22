@@ -17,7 +17,6 @@ public class Game {
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
-    int[] highscores= new int[6];
 
     Deque<String> popQuestions = new LinkedList<String>();
     Deque<String> scienceQuestions = new LinkedList<String>();
@@ -100,7 +99,7 @@ public class Game {
 				System.out.println(getCurrentPlayersName() 
 						+ "'s new location is " 
 						+ places[currentPlayer]);
-				System.out.println("The category is " + currentCategory());
+				System.out.println("The category is " + currentQuestionsCategory());
 				askQuestion();
 			} else {
 				System.out.println(getCurrentPlayersName() + " is not getting out of the penalty box");
@@ -115,7 +114,7 @@ public class Game {
 			System.out.println(getCurrentPlayersName() 
 					+ "'s new location is " 
 					+ places[currentPlayer]);
-			System.out.println("The category is " + currentCategory());
+			System.out.println("The category is " + currentQuestionsCategory());
 			askQuestion();
 		}
 		
@@ -126,27 +125,28 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (currentCategory() == POP)
+		if (currentQuestionsCategory() == POP)
 			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == SCIENCE)
+		if (currentQuestionsCategory() == SCIENCE)
 			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == SPORTS)
+		if (currentQuestionsCategory() == SPORTS)
 			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == ROCK)
+		if (currentQuestionsCategory() == ROCK)
 			System.out.println(rockQuestions.removeFirst());		
 	}
 	
 	// randomly return a category
-	private String currentCategory() {
-		if (places[currentPlayer] == 0) return POP;
-		if (places[currentPlayer] == 4) return POP;
-		if (places[currentPlayer] == 8) return POP;
-		if (places[currentPlayer] == 1) return SCIENCE;
-		if (places[currentPlayer] == 5) return SCIENCE;
-		if (places[currentPlayer] == 9) return SCIENCE;
-		if (places[currentPlayer] == 2) return SPORTS;
-		if (places[currentPlayer] == 6) return SPORTS;
-		if (places[currentPlayer] == 10) return SPORTS;
+	private String currentQuestionsCategory() {
+		int currentPlayersPlace = places[currentPlayer];
+		if (currentPlayersPlace == 0) return POP;
+		if (currentPlayersPlace == 4) return POP;
+		if (currentPlayersPlace == 8) return POP;
+		if (currentPlayersPlace == 1) return SCIENCE;
+		if (currentPlayersPlace == 5) return SCIENCE;
+		if (currentPlayersPlace == 9) return SCIENCE;
+		if (currentPlayersPlace == 2) return SPORTS;
+		if (currentPlayersPlace == 6) return SPORTS;
+		if (currentPlayersPlace == 10) return SPORTS;
 		return ROCK;
 	}
 
