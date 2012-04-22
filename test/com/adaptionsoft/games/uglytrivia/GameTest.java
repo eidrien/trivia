@@ -1,6 +1,9 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.NoSuchElementException;
 
 import org.junit.Test;
 
@@ -53,5 +56,14 @@ public class GameTest {
 		assertEquals("Tester3", game.getCurrentPlayersName());
 		game.wasCorrectlyAnswered();
 		assertEquals("Tester1", game.getCurrentPlayersName());
+	}
+	
+	@Test(expected = NoSuchElementException.class)
+	public void breaksAfterAskingMoreThan50QuestionsOfTheSameType(){
+		Game game = new Game();
+		game.add("Tester1");
+		for(int i=0; i<51; i++){
+			game.roll(0);
+		}
 	}
 }

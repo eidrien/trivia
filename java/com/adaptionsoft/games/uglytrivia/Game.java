@@ -97,7 +97,7 @@ public class Game {
 		}
 	}
 
-	private void movePlayerAndAskQuestion(int roll) {
+	void movePlayerAndAskQuestion(int roll) {
 		moveCurrentPlayer(roll);
 		askQuestion();
 	}
