@@ -17,43 +17,17 @@ public class Game {
 	
 	List<Player> players = new ArrayList<Player>();
 	
-    Deque<String> popQuestions = new LinkedList<String>();
-    Deque<String> scienceQuestions = new LinkedList<String>();
-    Deque<String> sportsQuestions = new LinkedList<String>();
-    Deque<String> rockQuestions = new LinkedList<String>();
+	QuestionDeck popQuestions = new QuestionDeck(POP);
+    QuestionDeck scienceQuestions = new QuestionDeck(SCIENCE);
+    QuestionDeck sportsQuestions = new QuestionDeck(SPORTS);
+    QuestionDeck rockQuestions = new QuestionDeck(ROCK);
     
     Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
-    	for (int i = 0; i < 50; i++) {
-			popQuestions.addLast(createPopQuestion(i));
-			scienceQuestions.addLast(createScienceQuestion(i));
-			sportsQuestions.addLast(createSportsQuestion(i));
-			rockQuestions.addLast(createRockQuestion(i));
-    	}
     }
     
-    private String createSportsQuestion(int i) {
-		return createQuestion(SPORTS, i);
-	}
-
-	private String createScienceQuestion(int i) {
-		return createQuestion(SCIENCE, i);
-	}
-
-	private String createPopQuestion(int i) {
-		return createQuestion(POP, i);
-	}
-
-	public String createRockQuestion(int i){
-		return createQuestion(ROCK, i);
-	}
-	
-	public String createQuestion(String type, int index){
-		return type + " Question " + index;
-	}
-
 	/**
 	 * Game is playable with two or more players.
 	 */
@@ -126,13 +100,13 @@ public class Game {
 	private void askQuestion() {
 		System.out.println("The category is " + currentQuestionsCategory());
 		if (currentQuestionsCategory() == POP)
-			System.out.println(popQuestions.removeFirst());
+			System.out.println(popQuestions.getNext());
 		if (currentQuestionsCategory() == SCIENCE)
-			System.out.println(scienceQuestions.removeFirst());
+			System.out.println(scienceQuestions.getNext());
 		if (currentQuestionsCategory() == SPORTS)
-			System.out.println(sportsQuestions.removeFirst());
+			System.out.println(sportsQuestions.getNext());
 		if (currentQuestionsCategory() == ROCK)
-			System.out.println(rockQuestions.removeFirst());		
+			System.out.println(rockQuestions.getNext());		
 	}
 	
 	// randomly return a category
