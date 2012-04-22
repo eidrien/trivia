@@ -7,6 +7,7 @@ public class Game {
 	
 	List<Player> players;
 	QuestionDeck[] questions;
+	Board board;
     
     Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
@@ -17,6 +18,7 @@ public class Game {
        	for(int i=0;i<Board.TYPES_OF_QUESTIONS;i++){
     		questions[i] = new QuestionDeck(i);
     	}
+       	board = new Board();
     }
     
 	public boolean add(String playerName) {
@@ -61,8 +63,7 @@ public class Game {
 	}
 
 	private void moveCurrentPlayer(int roll) {
-		int newPlace = getCurrentPlayersPlace() + roll;
-		if (newPlace >= Board.BOARD_SIZE) newPlace = newPlace - Board.BOARD_SIZE;
+		int newPlace = board.getNextPosition(getCurrentPlayersPlace(), roll);
 		currentPlayer.moveTo(newPlace);
 		System.out.println(getCurrentPlayersName() 
 				+ "'s new location is " 
@@ -82,8 +83,7 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		System.out.println("The category is " + QuestionDeck.getQuestionTypeText(currentQuestionsCategory()));
-		System.out.println(questions[currentQuestionsCategory()].getNext());
+		questions[currentQuestionsCategory()].askQuestion();
 	}
 	
 	// randomly return a category

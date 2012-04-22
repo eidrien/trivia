@@ -33,4 +33,8 @@ public class QuestionDeck {
 		return getQuestionTypeText(type) + " Question " + (nextQuestionId++);
 	}
 
+	public void askQuestion(){
+		System.out.println("The category is " + getQuestionTypeText(type));
+		System.out.println(getNext());		
+	}
 }

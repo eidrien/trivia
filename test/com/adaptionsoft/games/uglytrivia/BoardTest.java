@@ -24,4 +24,10 @@ public class BoardTest {
 		assertEquals(Board.ROCK, board.getQuestionCategory(11));
 	}
 	
+	@Test
+	public void calculatesEndPlace(){
+		Board board = new Board();
+		assertEquals(3, board.getNextPosition(1, 2));
+		assertEquals(1, board.getNextPosition(8, 5));
+	}
 }
