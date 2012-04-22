@@ -12,6 +12,8 @@ public class Game {
 	public static final String SPORTS = "Sports";
 	public static final String ROCK = "Rock";
 	
+	public static final int BOARD_SIZE = 12;
+	
 	
 	List<Player> players = new ArrayList<Player>();
 	
@@ -102,7 +104,7 @@ public class Game {
 
 	private void moveCurrentPlayer(int roll) {
 		int newPlace = getCurrentPlayersPlace() + roll;
-		if (newPlace > 11) newPlace = newPlace - 12;
+		if (newPlace >= BOARD_SIZE) newPlace = newPlace - BOARD_SIZE;
 		currentPlayer.moveTo(newPlace);
 		System.out.println(getCurrentPlayersName() 
 				+ "'s new location is " 
@@ -149,30 +151,15 @@ public class Game {
 	}
 
 	public boolean wasCorrectlyAnswered() {
-		if (isCurrentPlayerInPenaltyBox()){
-			if (isGettingOutOfPenaltyBox) {
-				currentPlayerAnsweredCorrectly();
-				
-				boolean winner = didPlayerWin();
-				nextPlayersTurn();
-				
-				return winner;
-			} else {
-				nextPlayersTurn();
-				return true;
-			}
-			
-			
-			
-		} else {
-		
-			currentPlayerAnsweredCorrectly();
-			
-			boolean winner = didPlayerWin();
+		if (isCurrentPlayerInPenaltyBox() && !isGettingOutOfPenaltyBox){
 			nextPlayersTurn();
-			
-			return winner;
+			return true;
 		}
+		
+		currentPlayerAnsweredCorrectly();
+		boolean winner = didPlayerWin();
+		nextPlayersTurn();
+		return winner;
 	}
 
 	private void currentPlayerAnsweredCorrectly() {
