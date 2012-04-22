@@ -9,16 +9,20 @@ public class Board {
 	
 	public static final int TYPES_OF_QUESTIONS = 4;
 	
-	public static final int BOARD_SIZE = 12;
+	public int size;
+	
+	public Board(int size){
+		this.size = size;
+	}
 	
 	public int getNextPosition(int currentPlace, int roll) {
 		int newPlace = currentPlace + roll;
-		if (newPlace >= BOARD_SIZE) newPlace = newPlace - BOARD_SIZE;
+		if (newPlace >= size) newPlace = newPlace - size;
 		return newPlace;
 	}
 
 	public int getQuestionCategory(int place) {
 		return place % TYPES_OF_QUESTIONS;
 	}
-
+	
 }

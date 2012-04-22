@@ -9,7 +9,7 @@ public class BoardTest {
 
 	@Test
 	public void verifyTheQuestionTypeAssociatedWithEachPlace(){
-		Board board= new Board();
+		Board board= new Board(12);
 		assertEquals(Board.POP, board.getQuestionCategory(0));
 		assertEquals(Board.SCIENCE, board.getQuestionCategory(1));
 		assertEquals(Board.SPORTS, board.getQuestionCategory(2));
@@ -26,7 +26,7 @@ public class BoardTest {
 	
 	@Test
 	public void calculatesEndPlace(){
-		Board board = new Board();
+		Board board = new Board(12);
 		assertEquals(3, board.getNextPosition(1, 2));
 		assertEquals(1, board.getNextPosition(8, 5));
 	}

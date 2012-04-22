@@ -18,7 +18,7 @@ public class Game {
        	for(int i=0;i<Board.TYPES_OF_QUESTIONS;i++){
     		questions[i] = new QuestionDeck(i);
     	}
-       	board = new Board();
+       	board = new Board(12);
     }
     
 	public boolean add(String playerName) {
@@ -28,8 +28,6 @@ public class Game {
 			currentPlayer = newPlayer;
 		}
 		players.add(newPlayer);
-		
-		
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + howManyPlayers());
 		return true;
@@ -65,9 +63,6 @@ public class Game {
 	private void moveCurrentPlayer(int roll) {
 		int newPlace = board.getNextPosition(currentPlayer.getPlace(), roll);
 		currentPlayer.moveTo(newPlace);
-		System.out.println(currentPlayer.getName() 
-				+ "'s new location is " 
-				+ currentPlayer.getPlace());
 	}
 
 	private void askQuestion() {
@@ -99,7 +94,6 @@ public class Game {
 	
 	public boolean wasIncorrectlyAnswered(){
 		currentPlayer.answeredIncorrectly();
-		
 		nextPlayersTurn();
 		return false;
 	}

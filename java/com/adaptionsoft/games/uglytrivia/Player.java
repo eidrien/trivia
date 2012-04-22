@@ -30,6 +30,9 @@ public class Player {
 
 	public void moveTo(int newPlace) {
 		this.place = newPlace;
+		System.out.println(getName() 
+				+ "'s new location is " 
+				+ getPlace());
 	}
 
 	public void answeredCorrectly() {
