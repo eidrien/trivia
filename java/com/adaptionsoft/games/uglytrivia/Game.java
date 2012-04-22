@@ -87,19 +87,19 @@ public class Game {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				System.out.println(getCurrentPlayersName() + " is getting out of the penalty box");
-				moveCurrentPlayer(roll);
-				askQuestion();
+				movePlayerAndAskQuestion(roll);
 			} else {
 				System.out.println(getCurrentPlayersName() + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
-			}
-			
+			}	
 		} else {
-		
-			moveCurrentPlayer(roll);
-			askQuestion();
+			movePlayerAndAskQuestion(roll);
 		}
-		
+	}
+
+	private void movePlayerAndAskQuestion(int roll) {
+		moveCurrentPlayer(roll);
+		askQuestion();
 	}
 
 	private void moveCurrentPlayer(int roll) {
