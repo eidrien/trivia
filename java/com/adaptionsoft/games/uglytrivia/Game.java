@@ -113,7 +113,7 @@ public class Game {
 	public boolean wasCorrectlyAnswered() {
 		if (isCurrentPlayerInPenaltyBox() && !isGettingOutOfPenaltyBox){
 			nextPlayersTurn();
-			return true;
+			return false;
 		}
 		
 		currentPlayerAnsweredCorrectly();
@@ -151,13 +151,13 @@ public class Game {
 		currentPlayer.answeredIncorrectly();
 		
 		nextPlayersTurn();
-		return true;
+		return false;
 	}
 
 	/**
 	 * Player wins when its purse contains an amount different than 6.
 	 */
 	private boolean didPlayerWin() {
-		return !(getCurrentPlayersPurse() == 6);
+		return getCurrentPlayersPurse() == 6;
 	}
 }

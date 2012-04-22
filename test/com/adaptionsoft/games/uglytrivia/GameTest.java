@@ -1,7 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.NoSuchElementException;
 
@@ -103,5 +102,24 @@ public class GameTest {
 		game.roll(1);
 		assertEquals(Game.ROCK, game.currentQuestionsCategory());
 		game.roll(1);
+	}
+	
+	@Test
+	public void playerWithSixCorrectAnswersWins(){
+		Game game = new Game();
+		game.add("Tester1");
+		assertFalse(game.wasCorrectlyAnswered());
+		assertFalse(game.wasCorrectlyAnswered());
+		assertFalse(game.wasCorrectlyAnswered());
+		assertFalse(game.wasCorrectlyAnswered());
+		assertFalse(game.wasCorrectlyAnswered());
+		assertTrue(game.wasCorrectlyAnswered());
+	}
+	
+	@Test
+	public void playerAnsweringIncorrectlyIsntWinning(){
+		Game game = new Game();
+		game.add("Tester1");
+		assertFalse(game.wasIncorrectlyAnswered());
 	}
 }
