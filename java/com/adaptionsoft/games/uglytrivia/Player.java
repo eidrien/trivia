@@ -16,4 +16,14 @@ public class Player {
 	public boolean isInPenaltyBox() {
 		return false;
 	}
+
+
+	public int getPlace() {
+		return 0;
+	}
+
+
+	public int getPurse() {
+		return 0;
+	}
 }
