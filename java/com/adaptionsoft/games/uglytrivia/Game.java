@@ -24,15 +24,16 @@ public class Game {
 		return null;
 	}
 	
-	
-	List<Player> players = new ArrayList<Player>();
-	QuestionDeck[] questions = new QuestionDeck[TYPES_OF_QUESTIONS];
+	List<Player> players;
+	QuestionDeck[] questions;
     
     Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
     
     public  Game(){
-    	for(int i=0;i<TYPES_OF_QUESTIONS;i++){
+    	players = new ArrayList<Player>();
+    	questions = new QuestionDeck[TYPES_OF_QUESTIONS];
+       	for(int i=0;i<TYPES_OF_QUESTIONS;i++){
     		questions[i] = new QuestionDeck(getQuestionTypeText(i));
     	}
     }
