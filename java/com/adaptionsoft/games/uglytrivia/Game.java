@@ -36,6 +36,10 @@ public class Game {
 			rockQuestions.addLast(createRockQuestion(i));
     	}
     }
+    
+    public Player getCurrentPlayer(){
+    	return players.get(currentPlayer);
+    }
 
 	private String createSportsQuestion(int i) {
 		return createQuestion(SPORTS, i);
@@ -113,7 +117,7 @@ public class Game {
 				+ getCurrentPlayersPlace());
 	}
 
-	private int getCurrentPlayersPlace() {
+	int getCurrentPlayersPlace() {
 		return places[currentPlayer];
 	}
 

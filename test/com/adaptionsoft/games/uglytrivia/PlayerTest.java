@@ -30,4 +30,5 @@ public class PlayerTest {
 		Player player = new Player("Tester");
 		assertEquals("Tester", player.getName());
 	}
+	
 }
