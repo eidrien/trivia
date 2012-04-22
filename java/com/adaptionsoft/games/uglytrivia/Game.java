@@ -197,7 +197,7 @@ public class Game {
 		if (currentPlayer == playerNames.size()) currentPlayer = 0;
 	}
 	
-	public boolean wrongAnswer(){
+	public boolean currentPlayerAnsweredIncorrectly(){
 		System.out.println("Question was incorrectly answered");
 		System.out.println(getCurrentPlayersName()+ " was sent to the penalty box");
 		inPenaltyBox[currentPlayer] = true;
