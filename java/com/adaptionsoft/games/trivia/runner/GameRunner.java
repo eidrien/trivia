@@ -16,7 +16,7 @@ public class GameRunner {
 	}
 
 	private static void runTrivia(Random rand) {
-		Game aGame = new Game();
+		Game aGame = new Game(12);
 		
 		aGame.add("Chet");
 		aGame.add("Pat");

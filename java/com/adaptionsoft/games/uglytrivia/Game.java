@@ -12,13 +12,13 @@ public class Game {
     Player currentPlayer;
     boolean isGettingOutOfPenaltyBox;
     
-    public  Game(){
+    public  Game(int boardSize){
     	players = new ArrayList<Player>();
-    	questions = new QuestionDeck[Board.TYPES_OF_QUESTIONS];
-       	for(int i=0;i<Board.TYPES_OF_QUESTIONS;i++){
+    	questions = new QuestionDeck[Board.TYPES_OF_PLACES];
+       	for(int i=0;i<Board.TYPES_OF_PLACES;i++){
     		questions[i] = new QuestionDeck(i);
     	}
-       	board = new Board(12);
+       	board = new Board(boardSize);
     }
     
 	public boolean add(String playerName) {

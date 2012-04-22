@@ -4,15 +4,20 @@ import java.util.NoSuchElementException;
 
 public class QuestionDeck {
 
+	public static final int POP = 0;
+	public static final int SCIENCE = 1;
+	public static final int SPORTS = 2;
+	public static final int ROCK = 3;
+	
 	private int type;
 	private int nextQuestionId;
 	
 	public static String getQuestionTypeText(int type){
 		switch(type){
-		case Board.POP: return "Pop";
-		case Board.SCIENCE: return "Science";
-		case Board.SPORTS: return "Sports";
-		case Board.ROCK: return "Rock";
+		case POP: return "Pop";
+		case SCIENCE: return "Science";
+		case SPORTS: return "Sports";
+		case ROCK: return "Rock";
 		}
 		return null;
 	}

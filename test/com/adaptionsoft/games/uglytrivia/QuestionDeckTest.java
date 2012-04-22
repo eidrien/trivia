@@ -11,13 +11,13 @@ public class QuestionDeckTest {
 
 	@Test
 	public void contains50Questions(){
-		QuestionDeck questions = new QuestionDeck(Board.ROCK);
+		QuestionDeck questions = new QuestionDeck(QuestionDeck.ROCK);
 		assertEquals(50, questions.size());
 	}
 	
 	@Test
 	public void everyNewQuestionIncrementsItsIdentifierInTheText(){
-		QuestionDeck questions = new QuestionDeck(Board.ROCK);
+		QuestionDeck questions = new QuestionDeck(QuestionDeck.ROCK);
 		assertEquals("Rock Question 0", questions.getNext());
 		assertEquals("Rock Question 1", questions.getNext());
 		assertEquals("Rock Question 2", questions.getNext());
@@ -28,13 +28,13 @@ public class QuestionDeckTest {
 	
 	@Test
 	public void haveTheTypeAtTheBeginning(){
-		QuestionDeck questions = new QuestionDeck(Board.ROCK);
+		QuestionDeck questions = new QuestionDeck(QuestionDeck.ROCK);
 		assertTrue(questions.getNext().startsWith("Rock"));
 	}
 	
 	@Test(expected = NoSuchElementException.class)
 	public void breaksWhenAskingMoreThan50Questions(){
-		QuestionDeck questions = new QuestionDeck(Board.ROCK);
+		QuestionDeck questions = new QuestionDeck(QuestionDeck.ROCK);
 		for(int i=0; i<51; i++){
 			questions.getNext();
 		}

@@ -11,7 +11,7 @@ public class GameTest {
 
 	@Test
 	public void movingAPlayerChangesItsPlace(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester");
 		game.roll(2);
 		assertEquals(2, game.currentPlayer.getPlace());
@@ -19,7 +19,7 @@ public class GameTest {
 	
 	@Test
 	public void movingAPlayerOverTheEndOfTheBoardMakesItContinueInTheBeginning(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester");
 		game.roll(2);
 		game.roll(10);
@@ -29,7 +29,7 @@ public class GameTest {
 	
 	@Test
 	public void answeringCorrectlyAddsOneToTheCurrentPlayersPurse(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester");
 		game.wasCorrectlyAnswered();
 		assertEquals(1, game.currentPlayer.getPurse());
@@ -37,7 +37,7 @@ public class GameTest {
 	
 	@Test
 	public void playerGoesToPenaltyBoxWhenAnsweringIncorrectly(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester");
 		game.wasIncorrectlyAnswered();
 		assertTrue(game.currentPlayer.isInPenaltyBox());
@@ -45,7 +45,7 @@ public class GameTest {
 	
 	@Test
 	public void afterAPlayerAnswersTheCurrentPlayerChanges(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester1");
 		game.add("Tester2");
 		game.add("Tester3");
@@ -59,7 +59,7 @@ public class GameTest {
 	
 	@Test(expected = NoSuchElementException.class)
 	public void breaksAfterAskingMoreThan50QuestionsOfTheSameType(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester1");
 		for(int i=0; i<51; i++){
 			game.roll(0);
@@ -68,45 +68,45 @@ public class GameTest {
 	
 	@Test
 	public void verifyTheQuestionTypeAssociatedWithEachPlace(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester1");
-		assertEquals(Board.POP, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.POP, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SCIENCE, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SCIENCE, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SPORTS, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SPORTS, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.ROCK, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.ROCK, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.POP, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.POP, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SCIENCE, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SCIENCE, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SPORTS, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SPORTS, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.ROCK, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.ROCK, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.POP, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.POP, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SCIENCE, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SCIENCE, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SPORTS, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SPORTS, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.ROCK, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.ROCK, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.POP, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.POP, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SCIENCE, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SCIENCE, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.SPORTS, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.SPORTS, game.currentQuestionsCategory());
 		game.roll(1);
-		assertEquals(Board.ROCK, game.currentQuestionsCategory());
+		assertEquals(QuestionDeck.ROCK, game.currentQuestionsCategory());
 		game.roll(1);
 	}
 	
 	@Test
 	public void playerWithSixCorrectAnswersWins(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester1");
 		assertFalse(game.wasCorrectlyAnswered());
 		assertFalse(game.wasCorrectlyAnswered());
@@ -118,7 +118,7 @@ public class GameTest {
 	
 	@Test
 	public void playerAnsweringIncorrectlyIsntWinning(){
-		Game game = new Game();
+		Game game = new Game(12);
 		game.add("Tester1");
 		assertFalse(game.wasIncorrectlyAnswered());
 	}

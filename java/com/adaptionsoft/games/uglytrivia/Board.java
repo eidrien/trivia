@@ -2,12 +2,7 @@ package com.adaptionsoft.games.uglytrivia;
 
 public class Board {
 
-	public static final int POP = 0;
-	public static final int SCIENCE = 1;
-	public static final int SPORTS = 2;
-	public static final int ROCK = 3;
-	
-	public static final int TYPES_OF_QUESTIONS = 4;
+	public static final int TYPES_OF_PLACES = 4;
 	
 	public int size;
 	
@@ -22,7 +17,7 @@ public class Board {
 	}
 
 	public int getQuestionCategory(int place) {
-		return place % TYPES_OF_QUESTIONS;
+		return place % TYPES_OF_PLACES;
 	}
 	
 }
