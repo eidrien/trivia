@@ -88,17 +88,16 @@ public class Game {
 		System.out.println(getCurrentPlayersName() + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
-		if (inPenaltyBox[currentPlayer]) {
+		if (isCurrentPlayerInPenaltyBox()) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
 				
 				System.out.println(getCurrentPlayersName() + " is getting out of the penalty box");
-				places[currentPlayer] = places[currentPlayer] + roll;
-				if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+				moveCurrentPlayer(roll);
 				
 				System.out.println(getCurrentPlayersName() 
 						+ "'s new location is " 
-						+ places[currentPlayer]);
+						+ getCurrentPlayersPlace());
 				System.out.println("The category is " + currentQuestionsCategory());
 				askQuestion();
 			} else {
@@ -108,16 +107,28 @@ public class Game {
 			
 		} else {
 		
-			places[currentPlayer] = places[currentPlayer] + roll;
-			if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+			moveCurrentPlayer(roll);
 			
 			System.out.println(getCurrentPlayersName() 
 					+ "'s new location is " 
-					+ places[currentPlayer]);
+					+ getCurrentPlayersPlace());
 			System.out.println("The category is " + currentQuestionsCategory());
 			askQuestion();
 		}
 		
+	}
+
+	private void moveCurrentPlayer(int roll) {
+		places[currentPlayer] = getCurrentPlayersPlace() + roll;
+		if (getCurrentPlayersPlace() > 11) places[currentPlayer] = getCurrentPlayersPlace() - 12;
+	}
+
+	private int getCurrentPlayersPlace() {
+		return places[currentPlayer];
+	}
+
+	private boolean isCurrentPlayerInPenaltyBox() {
+		return inPenaltyBox[currentPlayer];
 	}
 
 	private String getCurrentPlayersName() {
@@ -137,7 +148,7 @@ public class Game {
 	
 	// randomly return a category
 	private String currentQuestionsCategory() {
-		int currentPlayersPlace = places[currentPlayer];
+		int currentPlayersPlace = getCurrentPlayersPlace();
 		if (currentPlayersPlace == 0) return POP;
 		if (currentPlayersPlace == 4) return POP;
 		if (currentPlayersPlace == 8) return POP;
@@ -151,7 +162,7 @@ public class Game {
 	}
 
 	public boolean wasCorrectlyAnswered() {
-		if (inPenaltyBox[currentPlayer]){
+		if (isCurrentPlayerInPenaltyBox()){
 			if (isGettingOutOfPenaltyBox) {
 				System.out.println("Answer was correct!!!!");
 				purses[currentPlayer]++;
