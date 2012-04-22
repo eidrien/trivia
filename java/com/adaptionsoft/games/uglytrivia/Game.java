@@ -32,11 +32,7 @@ public class Game {
     	}
     }
     
-    public Player getCurrentPlayer(){
-    	return currentPlayer;
-    }
-
-	private String createSportsQuestion(int i) {
+    private String createSportsQuestion(int i) {
 		return createQuestion(SPORTS, i);
 	}
 
@@ -107,22 +103,22 @@ public class Game {
 	private void moveCurrentPlayer(int roll) {
 		int newPlace = getCurrentPlayersPlace() + roll;
 		if (newPlace > 11) newPlace = newPlace - 12;
-		getCurrentPlayer().moveTo(newPlace);
+		currentPlayer.moveTo(newPlace);
 		System.out.println(getCurrentPlayersName() 
 				+ "'s new location is " 
 				+ getCurrentPlayersPlace());
 	}
 
 	int getCurrentPlayersPlace() {
-		return getCurrentPlayer().getPlace();
+		return currentPlayer.getPlace();
 	}
 
 	boolean isCurrentPlayerInPenaltyBox() {
-		return getCurrentPlayer().isInPenaltyBox();
+		return currentPlayer.isInPenaltyBox();
 	}
 
 	String getCurrentPlayersName() {
-		return getCurrentPlayer().getName();
+		return currentPlayer.getName();
 	}
 
 	private void askQuestion() {
@@ -189,11 +185,11 @@ public class Game {
 	}
 
 	private void incrementCurrentPlayersPurse() {
-		getCurrentPlayer().answeredCorrectly();
+		currentPlayer.answeredCorrectly();
 	}
 
 	int getCurrentPlayersPurse() {
-		return getCurrentPlayer().getPurse();
+		return currentPlayer.getPurse();
 	}
 
 	private void nextPlayersTurn() {
@@ -205,7 +201,7 @@ public class Game {
 	public boolean wasIncorrectlyAnswered(){
 		System.out.println("Question was incorrectly answered");
 		System.out.println(getCurrentPlayersName()+ " was sent to the penalty box");
-		getCurrentPlayer().answeredIncorrectly();
+		currentPlayer.answeredIncorrectly();
 		
 		nextPlayersTurn();
 		return true;
