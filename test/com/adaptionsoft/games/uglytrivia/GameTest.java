@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -31,5 +32,13 @@ public class GameTest {
 		game.add("Tester");
 		game.wasCorrectlyAnswered();
 		assertEquals(1, game.getCurrentPlayersPurse());
+	}
+	
+	@Test
+	public void playerGoesToPenaltyBoxWhenAnsweringIncorrectly(){
+		Game game = new Game();
+		game.add("Tester");
+		game.wasIncorrectlyAnswered();
+		assertTrue(game.isCurrentPlayerInPenaltyBox());
 	}
 }

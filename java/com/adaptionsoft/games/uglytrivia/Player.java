@@ -33,7 +33,6 @@ public class Player {
 	}
 
 	public void answeredCorrectly() {
-		// TODO Auto-generated method stub
 		this.purse++;
 	}
 
