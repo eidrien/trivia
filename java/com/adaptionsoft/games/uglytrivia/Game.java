@@ -207,7 +207,7 @@ public class Game {
 	}
 
 	/**
-	 * Tells if the last player won.
+	 * Player wins when its purse contains an amount different than 6.
 	 */
 	private boolean didPlayerWin() {
 		return !(purses[currentPlayer] == 6);
