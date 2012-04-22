@@ -86,10 +86,9 @@ public class Game {
 		questions[currentQuestionsCategory()].askQuestion();
 	}
 	
-	// randomly return a category
 	int currentQuestionsCategory() {
 		int currentPlayersPlace = getCurrentPlayersPlace();
-		return currentPlayersPlace % Board.TYPES_OF_QUESTIONS;
+		return board.getQuestionCategory(currentPlayersPlace);
 	}
 
 	public boolean wasCorrectlyAnswered() {
