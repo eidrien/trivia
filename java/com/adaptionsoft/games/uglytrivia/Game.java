@@ -15,8 +15,6 @@ public class Game {
 	
 	List<Player> players = new ArrayList<Player>();
 	
-    //List<String> playerNames = new ArrayList<String>();
-    int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
 
@@ -72,8 +70,6 @@ public class Game {
 		
 		players.add(new Player(playerName));
 		
-	    //playerNames.add(playerName);
-	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
@@ -110,15 +106,16 @@ public class Game {
 	}
 
 	private void moveCurrentPlayer(int roll) {
-		places[currentPlayer] = getCurrentPlayersPlace() + roll;
-		if (getCurrentPlayersPlace() > 11) places[currentPlayer] = getCurrentPlayersPlace() - 12;
+		int newPlace = getCurrentPlayersPlace() + roll;
+		if (newPlace > 11) newPlace = newPlace - 12;
+		getCurrentPlayer().moveTo(newPlace);
 		System.out.println(getCurrentPlayersName() 
 				+ "'s new location is " 
 				+ getCurrentPlayersPlace());
 	}
 
 	int getCurrentPlayersPlace() {
-		return places[currentPlayer];
+		return getCurrentPlayer().getPlace();
 	}
 
 	private boolean isCurrentPlayerInPenaltyBox() {
