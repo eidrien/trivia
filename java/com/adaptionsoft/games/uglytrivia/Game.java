@@ -5,25 +5,6 @@ import java.util.List;
 
 public class Game {
 	
-	public static final int POP = 0;
-	public static final int SCIENCE = 1;
-	public static final int SPORTS = 2;
-	public static final int ROCK = 3;
-	
-	public static final int TYPES_OF_QUESTIONS = 4;
-	
-	public static final int BOARD_SIZE = 12;
-	
-	public static String getQuestionTypeText(int type){
-		switch(type){
-		case POP: return "Pop";
-		case SCIENCE: return "Science";
-		case SPORTS: return "Sports";
-		case ROCK: return "Rock";
-		}
-		return null;
-	}
-	
 	List<Player> players;
 	QuestionDeck[] questions;
     
@@ -32,9 +13,9 @@ public class Game {
     
     public  Game(){
     	players = new ArrayList<Player>();
-    	questions = new QuestionDeck[TYPES_OF_QUESTIONS];
-       	for(int i=0;i<TYPES_OF_QUESTIONS;i++){
-    		questions[i] = new QuestionDeck(getQuestionTypeText(i));
+    	questions = new QuestionDeck[Board.TYPES_OF_QUESTIONS];
+       	for(int i=0;i<Board.TYPES_OF_QUESTIONS;i++){
+    		questions[i] = new QuestionDeck(QuestionDeck.getQuestionTypeText(i));
     	}
     }
     
@@ -81,7 +62,7 @@ public class Game {
 
 	private void moveCurrentPlayer(int roll) {
 		int newPlace = getCurrentPlayersPlace() + roll;
-		if (newPlace >= BOARD_SIZE) newPlace = newPlace - BOARD_SIZE;
+		if (newPlace >= Board.BOARD_SIZE) newPlace = newPlace - Board.BOARD_SIZE;
 		currentPlayer.moveTo(newPlace);
 		System.out.println(getCurrentPlayersName() 
 				+ "'s new location is " 
@@ -101,14 +82,14 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		System.out.println("The category is " + getQuestionTypeText(currentQuestionsCategory()));
+		System.out.println("The category is " + QuestionDeck.getQuestionTypeText(currentQuestionsCategory()));
 		System.out.println(questions[currentQuestionsCategory()].getNext());
 	}
 	
 	// randomly return a category
 	int currentQuestionsCategory() {
 		int currentPlayersPlace = getCurrentPlayersPlace();
-		return currentPlayersPlace % TYPES_OF_QUESTIONS;
+		return currentPlayersPlace % Board.TYPES_OF_QUESTIONS;
 	}
 
 	public boolean wasCorrectlyAnswered() {
