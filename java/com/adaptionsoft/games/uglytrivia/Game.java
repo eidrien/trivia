@@ -6,6 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
+	
+	public static final String POP = "Pop";
+	public static final String SCIENCE = "Science";
+	public static final String SPORTS = "Sports";
+	public static final String ROCK = "Rock";
+	
+	
     List<String> playerNames = new ArrayList<String>();
     int[] places = new int[6];
     int[] purses  = new int[6];
@@ -30,19 +37,19 @@ public class Game {
     }
 
 	private String createSportsQuestion(int i) {
-		return createQuestion("Sports", i);
+		return createQuestion(SPORTS, i);
 	}
 
 	private String createScienceQuestion(int i) {
-		return createQuestion("Science", i);
+		return createQuestion(SCIENCE, i);
 	}
 
 	private String createPopQuestion(int i) {
-		return createQuestion("Pop", i);
+		return createQuestion(POP, i);
 	}
 
 	public String createRockQuestion(int i){
-		return createQuestion("Rock", i);
+		return createQuestion(ROCK, i);
 	}
 	
 	public String createQuestion(String type, int index){
@@ -119,28 +126,28 @@ public class Game {
 	}
 
 	private void askQuestion() {
-		if (currentCategory() == "Pop")
+		if (currentCategory() == POP)
 			System.out.println(popQuestions.removeFirst());
-		if (currentCategory() == "Science")
+		if (currentCategory() == SCIENCE)
 			System.out.println(scienceQuestions.removeFirst());
-		if (currentCategory() == "Sports")
+		if (currentCategory() == SPORTS)
 			System.out.println(sportsQuestions.removeFirst());
-		if (currentCategory() == "Rock")
+		if (currentCategory() == ROCK)
 			System.out.println(rockQuestions.removeFirst());		
 	}
 	
 	// randomly return a category
 	private String currentCategory() {
-		if (places[currentPlayer] == 0) return "Pop";
-		if (places[currentPlayer] == 4) return "Pop";
-		if (places[currentPlayer] == 8) return "Pop";
-		if (places[currentPlayer] == 1) return "Science";
-		if (places[currentPlayer] == 5) return "Science";
-		if (places[currentPlayer] == 9) return "Science";
-		if (places[currentPlayer] == 2) return "Sports";
-		if (places[currentPlayer] == 6) return "Sports";
-		if (places[currentPlayer] == 10) return "Sports";
-		return "Rock";
+		if (places[currentPlayer] == 0) return POP;
+		if (places[currentPlayer] == 4) return POP;
+		if (places[currentPlayer] == 8) return POP;
+		if (places[currentPlayer] == 1) return SCIENCE;
+		if (places[currentPlayer] == 5) return SCIENCE;
+		if (places[currentPlayer] == 9) return SCIENCE;
+		if (places[currentPlayer] == 2) return SPORTS;
+		if (places[currentPlayer] == 6) return SPORTS;
+		if (places[currentPlayer] == 10) return SPORTS;
+		return ROCK;
 	}
 
 	public boolean wasCorrectlyAnswered() {
