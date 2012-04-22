@@ -16,7 +16,7 @@ public class Board {
 		return newPlace;
 	}
 
-	public int getQuestionCategory(int place) {
+	public int getPlaceCategory(int place) {
 		return place % TYPES_OF_PLACES;
 	}
 	

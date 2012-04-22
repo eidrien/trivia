@@ -52,4 +52,16 @@ public class PlayerTest {
 		player.answeredIncorrectly();
 		assertTrue(player.isInPenaltyBox());
 	}
+	
+	@Test
+	public void isWinnerAfterAnsweringSixCorrectly(){
+		player.answeredCorrectly();
+		player.answeredCorrectly();
+		player.answeredCorrectly();
+		player.answeredCorrectly();
+		player.answeredCorrectly();
+		assertFalse(player.hasWon());
+		player.answeredCorrectly();
+		assertTrue(player.hasWon());
+	}
 }

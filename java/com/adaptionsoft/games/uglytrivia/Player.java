@@ -50,4 +50,8 @@ public class Player {
 		this.inPenaltyBox = true;
 	}
 
+	public boolean hasWon() {
+		return getPurse() == 6;
+	}
+
 }

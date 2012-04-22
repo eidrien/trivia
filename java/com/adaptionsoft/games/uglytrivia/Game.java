@@ -71,7 +71,7 @@ public class Game {
 	
 	int currentQuestionsCategory() {
 		int currentPlayersPlace = currentPlayer.getPlace();
-		return board.getQuestionCategory(currentPlayersPlace);
+		return board.getPlaceCategory(currentPlayersPlace);
 	}
 
 	public boolean wasCorrectlyAnswered() {
@@ -81,7 +81,7 @@ public class Game {
 		}
 		
 		currentPlayer.answeredCorrectly();
-		boolean winner = didPlayerWin();
+		boolean winner = currentPlayer.hasWon();
 		nextPlayersTurn();
 		return winner;
 	}
@@ -98,10 +98,4 @@ public class Game {
 		return false;
 	}
 
-	/**
-	 * Player wins when its purse contains an amount different than 6.
-	 */
-	private boolean didPlayerWin() {
-		return currentPlayer.getPurse() == 6;
-	}
 }
