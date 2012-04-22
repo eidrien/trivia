@@ -13,7 +13,9 @@ public class Game {
 	public static final String ROCK = "Rock";
 	
 	
-    List<String> playerNames = new ArrayList<String>();
+	List<Player> players = new ArrayList<Player>();
+	
+    //List<String> playerNames = new ArrayList<String>();
     int[] places = new int[6];
     int[] purses  = new int[6];
     boolean[] inPenaltyBox  = new boolean[6];
@@ -64,19 +66,20 @@ public class Game {
 
 	public boolean add(String playerName) {
 		
+		players.add(new Player(playerName));
 		
-	    playerNames.add(playerName);
+	    //playerNames.add(playerName);
 	    places[howManyPlayers()] = 0;
 	    purses[howManyPlayers()] = 0;
 	    inPenaltyBox[howManyPlayers()] = false;
 	    
 	    System.out.println(playerName + " was added");
-	    System.out.println("They are player number " + playerNames.size());
+	    System.out.println("They are player number " + howManyPlayers());
 		return true;
 	}
 	
 	public int howManyPlayers() {
-		return playerNames.size();
+		return players.size();
 	}
 
 	public void roll(int roll) {
@@ -86,20 +89,17 @@ public class Game {
 		if (isCurrentPlayerInPenaltyBox()) {
 			if (roll % 2 != 0) {
 				isGettingOutOfPenaltyBox = true;
-				
 				System.out.println(getCurrentPlayersName() + " is getting out of the penalty box");
 				moveCurrentPlayer(roll);
-				
 				askQuestion();
 			} else {
 				System.out.println(getCurrentPlayersName() + " is not getting out of the penalty box");
 				isGettingOutOfPenaltyBox = false;
-				}
+			}
 			
 		} else {
 		
 			moveCurrentPlayer(roll);
-			
 			askQuestion();
 		}
 		
@@ -122,7 +122,7 @@ public class Game {
 	}
 
 	private String getCurrentPlayersName() {
-		return playerNames.get(currentPlayer);
+		return players.get(currentPlayer).getName();
 	}
 
 	private void askQuestion() {
@@ -190,7 +190,7 @@ public class Game {
 
 	private void nextPlayersTurn() {
 		currentPlayer++;
-		if (currentPlayer == playerNames.size()) currentPlayer = 0;
+		if (currentPlayer == howManyPlayers()) currentPlayer = 0;
 	}
 	
 	public boolean currentPlayerAnsweredIncorrectly(){

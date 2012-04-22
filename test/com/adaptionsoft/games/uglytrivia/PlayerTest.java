@@ -24,4 +24,10 @@ public class PlayerTest {
 		Player player = new Player("Tester");
 		assertEquals(0, player.getPurse());
 	}
+	
+	@Test
+	public void newPlayerRemembersItsName(){
+		Player player = new Player("Tester");
+		assertEquals("Tester", player.getName());
+	}
 }

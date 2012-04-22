@@ -12,18 +12,19 @@ public class Player {
 		this.name = name;
 	}
 
-
 	public boolean isInPenaltyBox() {
-		return false;
+		return inPenaltyBox;
 	}
 
+	public String getName(){
+		return name;
+	}
 
 	public int getPlace() {
-		return 0;
+		return place;
 	}
 
-
 	public int getPurse() {
-		return 0;
+		return purse;
 	}
 }
